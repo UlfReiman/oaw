@@ -29,6 +29,7 @@ import es.inteco.rastreador2.export.database.form.ObservatoryForm;
 import es.inteco.rastreador2.export.database.form.PageForm;
 import es.inteco.rastreador2.export.database.form.SiteForm;
 
+
 /**
  * The Class ExportDataBaseUtils.
  */
@@ -76,6 +77,7 @@ public final class ExportDataBaseUtils {
 		categoryForm.setSiteFormList(siteFormList);
 		return categoryForm;
 	}
+
 
 	/**
 	 * Gets the site form.
