@@ -1,16 +1,16 @@
 /*******************************************************************************
-* Copyright (C) 2012 INTECO, Instituto Nacional de Tecnologías de la Comunicación, 
+* Copyright (C) 2012 INTECO, Instituto Nacional de Tecnologías de la Comunicación,
 * This program is licensed and may be used, modified and redistributed under the terms
-* of the European Public License (EUPL), either version 1.2 or (at your option) any later 
+* of the European Public License (EUPL), either version 1.2 or (at your option) any later
 * version as soon as they are approved by the European Commission.
-* Unless required by applicable law or agreed to in writing, software distributed under the 
-* License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF 
-* ANY KIND, either express or implied. See the License for the specific language governing 
+* Unless required by applicable law or agreed to in writing, software distributed under the
+* License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+* ANY KIND, either express or implied. See the License for the specific language governing
 * permissions and more details.
-* You should have received a copy of the EUPL1.2 license along with this program; if not, 
+* You should have received a copy of the EUPL1.2 license along with this program; if not,
 * you may find it at http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017D0863
 * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-* Modificaciones: MINHAFP (Ministerio de Hacienda y Función Pública) 
+* Modificaciones: MINHAFP (Ministerio de Hacienda y Función Pública)
 * Email: observ.accesibilidad@correo.gob.es
 ******************************************************************************/
 package es.inteco.rastreador2.export.ddbb;
@@ -71,7 +71,7 @@ public class ExportObservatoryDDBB {
 
     private static Connection conectarSistemaDDBB() throws SQLException, ClassNotFoundException {
         //Obtenemos el Driver de la BBDD
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         //Obtenemos conexion a la BBDD
         Connection conn = DriverManager.getConnection("jdbc:mysql://172.23.52.30:3306/produccion_sistema", "root", "admin");
 
@@ -80,7 +80,7 @@ public class ExportObservatoryDDBB {
 
     private static Connection conectarIntavDDBB() throws SQLException, ClassNotFoundException {
         //Obtenemos el Driver de la BBDD
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         //Obtenemos conexion a la BBDD
         Connection conn = DriverManager.getConnection("jdbc:mysql://172.23.52.30:3306/produccion_intav", "root", "admin");
 
@@ -89,7 +89,7 @@ public class ExportObservatoryDDBB {
 
     private static Connection conectarMultilanguageDDBB() throws SQLException, ClassNotFoundException {
         //Obtenemos el Driver de la BBDD
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         //Obtenemos conexion a la BBDD
         Connection conn = DriverManager.getConnection("jdbc:mysql://172.23.52.30:3306/produccion_multilanguage", "root", "admin");
 
@@ -117,7 +117,7 @@ public class ExportObservatoryDDBB {
         bw.write("CREATE TABLE lista (id_lista bigint(20) NOT NULL auto_increment," +
                 "nombre varchar(255) NOT NULL,lista text NOT NULL," +
                 "id_categoria bigint(20) default NULL, acronimo varchar(25) default NULL," +
-                "dependencia varchar(255) default NULL, PRIMARY KEY (id_lista), " +
+                " PRIMARY KEY (id_lista), " +
                 "KEY id_categoria (id_categoria)," +
                 "FOREIGN KEY (id_categoria) REFERENCES categorias_lista (id_categoria) ON DELETE CASCADE) " +
                 "ENGINE=InnoDB;");
@@ -214,15 +214,9 @@ public class ExportObservatoryDDBB {
             String query = "INSERT INTO lista VALUES(" + rs.getString("id_lista") + ",'" + replaceSpecialChars(rs.getString("nombre")) + "','"
                     + rs.getString("lista") + "'," + rs.getString("id_categoria");
             if (rs.getString("acronimo") != null) {
-                query += ",'" + rs.getString("acronimo") + "',";
+                query += ",'" + rs.getString("acronimo") + "');";
             } else {
-                query += "," + rs.getString("acronimo") + ",";
-            }
-
-            if (rs.getString("dependencia") != null) {
-                query += " '" + rs.getString("dependencia") + "');";
-            } else {
-                query += rs.getString("dependencia") + ");";
+                query += "," + rs.getString("acronimo") + ");";
             }
 
             bw.write(query + "\n");

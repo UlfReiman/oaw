@@ -38,178 +38,93 @@ Adaptive Technology Resource Centre, University of Toronto
 130 St. George St., Toronto, Ontario, Canada
 Telephone: (416) 978-4360
 */
+
+
 package ca.utoronto.atrc.tile.accessibilitychecker;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-/**
- * The Class TableNode.
- */
 public class TableNode {
-	/** The node. */
-	private Node node;
-	/** The row span. */
-	private int rowSpan;
-	/** The col span. */
-	private int colSpan;
-	/** The is span cell. */
-	private boolean isSpanCell;
-	/** The is header cell. */
-	private boolean isHeaderCell;
-	/** The is empty cell. */
-	private boolean isEmptyCell;
 
-	/**
-	 * Instantiates a new table node.
-	 */
-	public TableNode() {
-		rowSpan = 0;
-		colSpan = 0;
-		node = null;
-		isSpanCell = false;
-		isHeaderCell = false;
-		isHeaderCell = false;
-	}
+    private Node node;
+    private int rowSpan;
+    private int colSpan;
+    private boolean isSpanCell;
+    private boolean isHeaderCell;
 
-	/**
-	 * Instantiates a new table node.
-	 *
-	 * @param spanCell the span cell
-	 */
-	public TableNode(boolean spanCell) {
-		rowSpan = 0;
-		colSpan = 0;
-		node = null;
-		isSpanCell = true;
-		isHeaderCell = false;
-	}
+    public TableNode() {
+        rowSpan = 0;
+        colSpan = 0;
+        node = null;
+        isSpanCell = false;
+        isHeaderCell = false;
+    }
 
-	/**
-	 * Instantiates a new table node.
-	 *
-	 * @param node the node
-	 */
-	public TableNode(Node node) {
-		try {
-			rowSpan = Integer.valueOf(((Element) node).getAttribute("rowSpan"));
-		} catch (Exception e) {
-			rowSpan = 0;
-		}
-		try {
-			colSpan = Integer.valueOf(((Element) node).getAttribute("colSpan"));
-		} catch (Exception e) {
-			colSpan = 0;
-		}
-		this.node = node;
-		isSpanCell = false;
-	}
+    public TableNode(boolean spanCell) {
+        rowSpan = 0;
+        colSpan = 0;
+        node = null;
+        isSpanCell = true;
+        isHeaderCell = false;
+    }
 
-	/**
-	 * Checks if is span cell.
-	 *
-	 * @return true, if is span cell
-	 */
-	public boolean isSpanCell() {
-		return isSpanCell;
-	}
+    public TableNode(Node node) {
+        try {
+            rowSpan = Integer.valueOf(((Element) node).getAttribute("rowSpan"));
+        } catch (Exception e) {
+            rowSpan = 0;
+        }
 
-	/**
-	 * Sets the span cell.
-	 *
-	 * @param isSpanCell the new span cell
-	 */
-	public void setSpanCell(boolean isSpanCell) {
-		this.isSpanCell = isSpanCell;
-	}
+        try {
+            colSpan = Integer.valueOf(((Element) node).getAttribute("colSpan"));
+        } catch (Exception e) {
+            colSpan = 0;
+        }
 
-	/**
-	 * Gets the node.
-	 *
-	 * @return the node
-	 */
-	public Node getNode() {
-		return node;
-	}
+        this.node = node;
+        isSpanCell = false;
+    }
 
-	/**
-	 * Sets the node.
-	 *
-	 * @param node the new node
-	 */
-	public void setNode(Node node) {
-		this.node = node;
-	}
+    public boolean isSpanCell() {
+        return isSpanCell;
+    }
 
-	/**
-	 * Gets the row span.
-	 *
-	 * @return the row span
-	 */
-	public int getRowSpan() {
-		return rowSpan;
-	}
+    public void setSpanCell(boolean isSpanCell) {
+        this.isSpanCell = isSpanCell;
+    }
 
-	/**
-	 * Sets the row span.
-	 *
-	 * @param rowSpan the new row span
-	 */
-	public void setRowSpan(int rowSpan) {
-		this.rowSpan = rowSpan;
-	}
+    public Node getNode() {
+        return node;
+    }
 
-	/**
-	 * Gets the col span.
-	 *
-	 * @return the col span
-	 */
-	public int getColSpan() {
-		return colSpan;
-	}
+    public void setNode(Node node) {
+        this.node = node;
+    }
 
-	/**
-	 * Sets the col span.
-	 *
-	 * @param colSpan the new col span
-	 */
-	public void setColSpan(int colSpan) {
-		this.colSpan = colSpan;
-	}
+    public int getRowSpan() {
+        return rowSpan;
+    }
 
-	/**
-	 * Checks if is header cell.
-	 *
-	 * @return true, if is header cell
-	 */
-	public boolean isHeaderCell() {
-		return isHeaderCell;
-	}
+    public void setRowSpan(int rowSpan) {
+        this.rowSpan = rowSpan;
+    }
 
-	/**
-	 * Sets the header cell.
-	 *
-	 * @param isHeaderCell the new header cell
-	 */
-	public void setHeaderCell(boolean isHeaderCell) {
-		this.isHeaderCell = isHeaderCell;
-	}
+    public int getColSpan() {
+        return colSpan;
+    }
 
-	/**
-	 * Checks if is empty cell.
-	 *
-	 * @return the isEmptyCell
-	 */
-	public boolean isEmptyCell() {
-		return isEmptyCell;
-	}
+    public void setColSpan(int colSpan) {
+        this.colSpan = colSpan;
+    }
 
-	/**
-	 * Sets the empty cell.
-	 *
-	 * @param isEmptyCell the isEmptyCell to set
-	 */
-	public void setEmptyCell(boolean isEmptyCell) {
-		this.isEmptyCell = isEmptyCell;
-	}
+    public boolean isHeaderCell() {
+        return isHeaderCell;
+    }
+
+    public void setHeaderCell(boolean isHeaderCell) {
+        this.isHeaderCell = isHeaderCell;
+    }
+
 }
+

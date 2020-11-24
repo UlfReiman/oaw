@@ -1,6 +1,8 @@
 **/*.iml
 **/sonar-project.properties
+**/bin
 **/target
+**/.factorypath
 **/.idea
 **/.sonar
 **/.classpath
