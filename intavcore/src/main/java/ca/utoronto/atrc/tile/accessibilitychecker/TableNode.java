@@ -39,6 +39,7 @@ Adaptive Technology Resource Centre, University of Toronto
 Telephone: (416) 978-4360
 */
 
+
 package ca.utoronto.atrc.tile.accessibilitychecker;
 
 import org.w3c.dom.Element;
